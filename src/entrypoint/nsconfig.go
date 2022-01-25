@@ -69,7 +69,7 @@ func (n *NSConfig) ApplyArgs(ax ...string) {
 		if _, ok := n.cv[c]; ok {
 			n.Set(c, v, "arg")
 		} else {
-			n.ax = append(n.ax, x, v)
+			n.ax = append(n.ax, x, "\"" + v + "\"")
 		}
 	}
 }
