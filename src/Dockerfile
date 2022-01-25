@@ -39,12 +39,12 @@ RUN --mount=from=build,source=/etc/apk/keys,target=/etc/apk/keys \
     apk add --no-cache /nsbuild/wine/northstar-dedicated-wine-[0-9]*-r*.apk xvfb
 RUN --mount=from=build,source=/etc/apk/keys,target=/etc/apk/keys \
     --mount=from=build-northstar,source=/nsbuild/packages/main/x86_64,target=/nsbuild/northstar \
-    apk add --no-cache /nsbuild/northstar/*.apk
+    apk add --allow-untrusted --no-cache /nsbuild/northstar/*.apk
 RUN --mount=from=build,source=/etc/apk/keys,target=/etc/apk/keys \
     --mount=from=build-gfsdk,source=/nsbuild/packages/main/x86_64,target=/nsbuild/gfsdk \
     --mount=from=build-d3d11,source=/nsbuild/packages/main/x86_64,target=/nsbuild/d3d11 \
     --mount=from=build-entrypoint,source=/nsbuild/packages/main/x86_64,target=/nsbuild/entrypoint \
-    apk add --no-cache /nsbuild/gfsdk/*.apk /nsbuild/d3d11/*.apk /nsbuild/entrypoint/*.apk
+    apk add --allow-untrusted --no-cache /nsbuild/gfsdk/*.apk /nsbuild/d3d11/*.apk /nsbuild/entrypoint/*.apk
 
 RUN adduser -D northstar && \
     echo 'northstar ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/northstar && \
