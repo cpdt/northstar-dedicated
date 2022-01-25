@@ -66,10 +66,10 @@ func (n *NSConfig) ApplyArgs(ax ...string) {
 
 		// shift and get the convar value
 		c, v, ax = x[1:], ax[0], ax[1:]
-		if _, ok := n.cv[c]; ok {
+		if _, ok := n.cv[c]; ok || strings.HasPrefix(x, "-") {
 			n.Set(c, v, "arg")
 		} else {
-			n.ax = append(n.ax, x, "\"" + v + "\"")
+			n.ax = append(n.ax, x, v)
 		}
 	}
 }
